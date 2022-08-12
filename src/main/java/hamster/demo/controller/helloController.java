@@ -30,10 +30,22 @@ public class helloController {
 
     @GetMapping("hello-api")
     @ResponseBody
-    public Hello
+    public Hello helloapi(@RequestParam("name")String name){
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
 
     static class Hello{
-        private String
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 
 
