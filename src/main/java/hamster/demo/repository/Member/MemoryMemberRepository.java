@@ -4,7 +4,7 @@ import hamster.demo.domain.Member;
 
 import java.util.*;
 
-public class MemoryMemberRepository implements Repository{
+public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
@@ -30,7 +30,11 @@ public class MemoryMemberRepository implements Repository{
     }
 
     @Override
-    public List<Member> findByAll() {
-        return new ArrayList<>(store.values());
+    public List<Member> findAll() {
+       return new ArrayList<>(store.values());
+    }
+
+    public void clearStore(){
+        store.clear();
     }
 }
