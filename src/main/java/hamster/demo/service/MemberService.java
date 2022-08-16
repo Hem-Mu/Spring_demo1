@@ -3,13 +3,17 @@ package hamster.demo.service;
 import hamster.demo.domain.Member;
 import hamster.demo.repository.Member.MemberRepository;
 import hamster.demo.repository.Member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
