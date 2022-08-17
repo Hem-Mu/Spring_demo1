@@ -4,8 +4,11 @@ import hamster.demo.domain.Member;
 import hamster.demo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -28,5 +31,12 @@ public class MemberController {
         memberService.Join(member);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model){
+        List<Member> members = memberService.findMember();
+        model.addAttribute("members", members); // addAttribute (key, value) // view에 전달 할 데이터를 key, value 쌍으로 전달 가능
+        return "members/memberList";
     }
 }
