@@ -1,36 +1,32 @@
 package hamster.demo.service;
 
 import hamster.demo.domain.Member;
+import hamster.demo.repository.Member.MemberRepository;
 import hamster.demo.repository.Member.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+@SpringBootTest //스프링부트테스트
+@Transactional //트랜잭션 롤백
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+class MemberServiceIntergrationTest {
 
-class MemberServiceTest {
-
+    @Autowired
     MemberService memberService;
-    MemoryMemberRepository repository;
-    @BeforeEach
-    public void beforeEach(){
-        repository = new MemoryMemberRepository();
-        memberService = new MemberService(repository);
-    }
-    @AfterEach
-    public void afterEach(){
-        repository.clearStore();
-    }
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     void 회원가입() {
         //given 무언가 주어지면
         Member member = new Member();
-        member.setName("hamster");
+        member.setName("hamster1");
         //when 실행하면
         long saveID = memberService.Join(member);
 

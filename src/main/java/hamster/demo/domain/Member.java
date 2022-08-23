@@ -1,7 +1,13 @@
 package hamster.demo.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Member {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) //DB가 자동으로 id생성
     private Long id;
+
+  //  @Column(name = "username")
     private String name;
 
     public Long getId() {

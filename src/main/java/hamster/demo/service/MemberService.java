@@ -5,6 +5,7 @@ import hamster.demo.repository.Member.MemberRepository;
 import hamster.demo.repository.Member.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,7 @@ public class MemberService {
     }
 
     /*회원가입*/
+    @Transactional
     public long Join(Member member){
         //같은 이름 회원 제외
         /*

@@ -17,6 +17,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.jetbrains:annotations:23.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc' // db 랑 연동시 필요
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // jpa
 	runtimeOnly 'com.h2database:h2' // h2 db 클라이언트
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
