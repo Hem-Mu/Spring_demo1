@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MemberServiceIntergrationTest {
 
+
     @Autowired
     MemberService memberService;
     @Autowired
